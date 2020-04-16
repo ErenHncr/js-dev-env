@@ -8,12 +8,12 @@ describe('Our first test', () => {
   })
 })
 describe('index.html', () => {
-  it('should say hello', (done) => { // with asyn call should have done
+  it('should have h1 that says Users', (done) => { // with asyn call should have done
 
     let index = readFileSync('./src/index.html', { encoding: "utf-8" });
     const dom = new JSDOM(index);
     const h1 = dom.window.document.getElementsByTagName('h1')[0];
-    expect(h1.innerHTML).to.equal('Hello World!');
+    expect(h1.innerHTML).to.equal('Users');
     done();
   })
 })

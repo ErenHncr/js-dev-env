@@ -4,13 +4,16 @@
   "description": "JavaScript development environment",
   "scripts": {
     "prestart": "babel-node buildScripts/startMessage.js",
-    "start": "npm-run-all --parallel open:src share lint:watch test:watch",
+    "start": "npm-run-all --parallel open:src share lint:watch test:watch start-mockapi",
     "open:src": "babel-node buildScripts/srcServer.js",
     "share": "surge ./src/ eren.surge.sh",
     "lint": "esw webpack.config.* src buildScripts --color",
     "lint:watch": "npm run lint -- --watch",
     "test": "mocha --reporter progress buildScripts/testSetup.js \"src/**/*.test.js\"",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "generate-mock-data": "babel-node  buildScripts/generateMockData",
+    "prestart-mockapi": "npm run generate-mock-data",
+    "start-mockapi": "json-server --watch src/api/db.json --port 3001"
   },
   "author": "Eren Hançer",
   "license": "MIT",
@@ -31,6 +34,7 @@
     "eslint-plugin-import": "^2.20.2",
     "eslint-watch": "^6.0.1",
     "express": "^4.17.1",
+    "faker": "^4.1.0",
     "html-webpack-plugin": "^4.2.0",
     "jsdom": "^16.2.2",
     "json-schema-faker": "^0.5.0-rcv.24",
@@ -47,6 +51,7 @@
     "webpack": "^4.42.1",
     "webpack-dev-middleware": "^3.7.2",
     "webpack-hot-middleware": "^2.25.0",
-    "webpack-md5-hash": "0.0.6"
+    "webpack-md5-hash": "0.0.6",
+    "whatwg-fetch": "^3.0.0"
   }
 }
