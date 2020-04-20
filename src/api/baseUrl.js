@@ -17,6 +17,3 @@ function getQueryStringParameterByName(name, url) {
   if (!results[2]) return '';
   return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
-
-
-BUNDLE SPLITTING KONUSUNDA KALDIM

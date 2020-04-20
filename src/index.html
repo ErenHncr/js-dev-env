@@ -2,6 +2,17 @@
 <html lang="en">
 
 <head>
+  <!-- Embedded JS used -->
+  <% if (htmlWebpackPlugin.options.trackJSToken) { %>
+  <!-- TrackerJS Error Logginsg -->
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS && TrackJS.install({
+      token: '<%=htmlWebpackPlugin.options.trackJSToken %>'
+      // for more configuration options, see https://docs.trackjs.com
+    });
+  </script>
+  <% } %>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
